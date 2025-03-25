@@ -117,14 +117,15 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    fontFamily:'Nunito-Bold',
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: '400',   fontFamily:'Nunito-Bold',
   },
   highlight: {
-    fontWeight: '700',
+    fontWeight: '700',  fontFamily:'Nunito-Bold',
   },
 });
 
