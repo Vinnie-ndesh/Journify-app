@@ -73,5 +73,15 @@ const GlobalStyles = StyleSheet.create({
     maxHeight: 40,
     fontFamily: 'Nunito-Regular',
   },
+
+  avata: {
+    width: 100,
+
+    height: 120,
+
+    padding: 10,
+    borderRadius: 15,
+  },
+
 });
 export default GlobalStyles;

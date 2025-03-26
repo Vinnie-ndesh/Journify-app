@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {AddJournal, EditJournal, LandingPage, ViewJournal} from '../screens/app/AppModule';
+import {AddJournal, ContactUs, EditJournal, LandingPage, ViewJournal} from '../screens/app/AppModule';
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -15,6 +15,7 @@ const AppStack = () => {
       <Stack.Screen name="ViewJournal" component={ViewJournal} />
       <Stack.Screen name="AddJournal" component={AddJournal} />
       <Stack.Screen name="EditJournal" component={EditJournal} />
+      <Stack.Screen name="ContactUs" component={ContactUs} />
     </Stack.Navigator>
   );
 };

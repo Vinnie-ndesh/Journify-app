@@ -61,7 +61,7 @@ const AddJournal = (props: any) => {
         };
         apiRequest('POST', 'journals/create-journal', journalData).then(
           (response: any) => {
-            console.log(response, 'response');
+          
             if (response.status === 201) {
               Alert.alert('Success', response.data.message);
               props.navigation.goBack();
@@ -135,7 +135,7 @@ const AddJournal = (props: any) => {
           <CustomButton
             title="Add Journal"
             color={AppColors.AppDarkGreen}
-            isFilled={true}
+           
             onPress={processAddJournal}
           />
         </View>

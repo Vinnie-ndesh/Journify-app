@@ -82,7 +82,7 @@ props.navigation.navigate('EditJournal', {journalData: journalData});
               minWidth="40%"
               maxWidth="45%"
               color={AppColors.AppBlue}
-              isFilled={true}
+           
               onPress={() => editJournal()}
             />
 
@@ -91,7 +91,7 @@ props.navigation.navigate('EditJournal', {journalData: journalData});
               minWidth="40%"
               maxWidth="45%"
               color={AppColors.AppRed}
-              isFilled={true}
+          
               onPress={() => deleteJournal()}
             />
           </View>

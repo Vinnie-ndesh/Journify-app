@@ -5,5 +5,5 @@ import LandingPage from './LandingPage';
 import ProfilePage from './ProfilePage';
 import ViewJournal from './ViewJournal';
 import EditJournal from './EditJournal';
-
-export {Dashboard,ProfilePage,Journals,LandingPage,ViewJournal,AddJournal,EditJournal};
+import ContactUs from './ContactPage';
+export {Dashboard,ProfilePage,Journals,LandingPage,ViewJournal,AddJournal,EditJournal,ContactUs};

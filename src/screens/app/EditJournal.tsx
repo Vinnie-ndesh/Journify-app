@@ -16,12 +16,14 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {apiRequest} from '../../utils/network';
 
 const EditJournal = (props: any) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+
+  const journalData = props.route.params.journalData || {};
+  const [title, setTitle] = useState(journalData.title||'');
+  const [content, setContent] = useState(journalData.content||'');
 
   const [categories, setCategories] = useState([]);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string | null>( journalData.categoryId||null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -41,6 +43,8 @@ const EditJournal = (props: any) => {
     };
 
     fetchCategories();
+
+
   }, []);
 
   const validateFields = () => {
@@ -54,17 +58,19 @@ const EditJournal = (props: any) => {
   const processEditJournal = () => {
     if (validateFields()) {
       try {
-        const journalData = {
+        const journalDataParam = {
           title,
           content,
           categoryId: value,
         };
-        apiRequest('POST', 'journals/create-journal', journalData).then(
+        apiRequest('PUT', `journals/edit-journal/${journalData.journalId}`, journalDataParam).then(
           (response: any) => {
-            console.log(response, 'response');
-            if (response.status === 201) {
+         
+            if (response.status === 200) {
               Alert.alert('Success', response.data.message);
-              props.navigation.goBack();
+           
+            
+              props.navigation.navigate('ViewJournal', {journalData: {...journalDataParam, journalId: journalData.journalId,createdAt: journalData.createdAt}});
             } else {
               Alert.alert('Error', response.message);
             }
@@ -80,7 +86,7 @@ const EditJournal = (props: any) => {
   return (
     <SafeAreaView style={GlobalStyles.safeArea}>
       <ScrollView contentContainerStyle={GlobalStyles.scrollContainer}>
-        <ScreenHeader title="Add Journal" navigation={props.navigation} />
+        <ScreenHeader title="Edit Journal" navigation={props.navigation} />
 
         <View>
           <Text style={GlobalStyles.labels}>Title</Text>
@@ -126,6 +132,7 @@ const EditJournal = (props: any) => {
             multiline={true}
             style={GlobalStyles.textArea}
             onChangeText={text => setContent(text)}
+            value={content}
             placeholderTextColor={AppColors.GrayLightApp}
             placeholder="Enter Your Content Here"
           />
@@ -133,9 +140,9 @@ const EditJournal = (props: any) => {
 
         <View>
           <CustomButton
-            title="Add Journal"
+            title="Edit Journal"
             color={AppColors.AppDarkGreen}
-            isFilled={true}
+        
             onPress={processEditJournal}
           />
         </View>
