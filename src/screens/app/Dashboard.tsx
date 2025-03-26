@@ -85,20 +85,21 @@ const Dashboard = () => {
           Category Distribution
         </Text>
         <PieChart
-          data={analysisData.categoryDistributionData.map((category: { categoryId: any; entryCount: any; }) => ({
-            name: category.categoryId,
-            population: category.entryCount,
-            color: `#${Math.floor(Math.random() * 16777215).toString(16)}`, 
-            legendFontSize: 14, 
-          }))}
+          data={analysisData.categoryDistributionData.map(
+            (category: {categoryId: any; entryCount: any}) => ({
+              name: category.categoryId,
+              population: category.entryCount,
+              color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+              legendFontSize: 14,
+            }),
+          )}
           width={360}
           height={220}
           chartConfig={{
-           
             decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`, 
+            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
-              borderRadius: 16, 
+              borderRadius: 16,
             },
           }}
           accessor="population"
@@ -166,10 +167,11 @@ const Dashboard = () => {
 
       <View style={styles.section}>
         <Text style={styles.title}>Mood Analysis</Text>
-     
-        {analysisData.moodData.map((entry:any, index:any) => (
+
+        {analysisData.moodData.map((entry: any, index: any) => (
           <Text key={index}>
-            Date: { formatDate(entry.date) } - Sentiment Score: {entry.sentimentScore}
+            Date: {formatDate(entry.date)} - Sentiment Score:{' '}
+            {entry.sentimentScore}
           </Text>
         ))}
       </View>
